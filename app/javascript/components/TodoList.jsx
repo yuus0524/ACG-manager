@@ -20,7 +20,7 @@ const SearchForm = styled.input`
 `
 
 const RemoveAllButton = styled.button`
-  width: 20%;
+  min-width: 120px;
   height: 40px;
   background: #f54242;
   border: none;
