@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
 
+  tab: {
+    height: 65,
+  }
 }));
 
 const Wrapper = styled.div`
@@ -43,7 +46,7 @@ const Logo = styled.div`
 `
 
 const Contents = styled.div`
-  height: calc(100vh - 40px - 100px - 48px);
+  height: calc(100vh - 40px - 100px - 65px);
   width: 700px;
   max-width: 85%;
   margin: 20px auto;
@@ -76,7 +79,7 @@ function App() {
           <Route path="/todos/:id/edit" component={EditTodo} />
         </Switch>
       </Contents>
-      <Paper>
+      <Paper className={classes.tab}>
         <Link to="/todos">
           <Tabs
             value={value}
