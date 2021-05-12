@@ -35,7 +35,7 @@ class Api::V1::TodosController < ApplicationController
     end
   end
 
-  def destroy_category_all
+  def destroy_all
     if Todo.destroy_all
       head :no_content
     else

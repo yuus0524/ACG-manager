@@ -5,12 +5,11 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
+import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import SendIcon from '@material-ui/icons/Send';
-import FormControl from '@material-ui/core/FormControl';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -105,6 +104,7 @@ function AddTodo(props) {
         <FormControl variant="filled" className={classes.formControl}>
           <InputLabel htmlFor="filled-age-native-simple">カテゴリー</InputLabel>
           <Select
+            required
             value={category}
             onChange={handleCategoryChange}
             inputProps={{
