@@ -1,3 +1,6 @@
 export { default as AddTodo } from './AddTodo'
 export { default as TodoList } from './TodoList'
+export { default as TodoListAnime } from './TodoListAnime'
+export { default as TodoListComic } from './TodoListComic'
+export { default as TodoListGame } from './TodoListGame'
 export { default as EditTodo } from './EditTodo'
