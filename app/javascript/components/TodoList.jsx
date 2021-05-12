@@ -2,8 +2,19 @@ import React, {useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import { makeStyles } from '@material-ui/core/styles';
 import { ImCheckboxUnchecked, ImCheckboxChecked } from 'react-icons/im'
 import { AiOutlineEdit } from 'react-icons/ai'
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+const useStyles = makeStyles((theme) => ({
+  removeAllBt: {
+    marginLeft: 10,
+    minWidth: 170,
+    height: 40,
+  }
+}));
 
 const SearchAndButtton = styled.div`
   display: flex;
@@ -17,19 +28,6 @@ const SearchForm = styled.input`
   height: 40px;
   margin: 10px 0;
   padding: 10px;
-`
-
-const RemoveAllButton = styled.button`
-  min-width: 120px;
-  height: 40px;
-  background: #f54242;
-  border: none;
-  font-weight: 500;
-  margin-left: 10px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  color: #fff;
-  cursor: pointer;
 `
 
 const TodoName = styled.span`
@@ -70,6 +68,8 @@ const EditButton = styled.span`
 `
 
 function TodoList() {
+  const classes = useStyles();
+
   const [todos, setTodos] = useState([])
   const [searchName, setSearchName] = useState('')
 
@@ -123,9 +123,15 @@ function TodoList() {
             setSearchName(event.target.value)
           }}
         />
-        <RemoveAllButton onClick={removeAllTodos}>
+        <Button
+          className={classes.removeAllBt}
+          variant="contained"
+          color="secondary"
+          endIcon={<DeleteIcon />}
+          onClick={removeAllTodos}
+        >
            Todoを全て削除
-        </RemoveAllButton>
+        </Button>
       </SearchAndButtton>
 
       <div>
