@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       delete '/todos/destroy_all', to: 'todos#destroy_all'
-      resources :todos, only: %i[index show create update destroy]
+      resources :todos, only: %i[index show create update destroy] do
+        collection do
+          delete 'destroy_anime'
+          delete 'destroy_comic'
+          delete 'destroy_game'
+        end
+      end
     end
   end
 end

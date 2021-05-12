@@ -8,7 +8,7 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   removeAllBt: {
     marginLeft: 10,
     minWidth: 170,
@@ -39,7 +39,7 @@ const TodoName = styled.span`
 
 const Row = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin: 7px auto;
   padding: 10px;
@@ -49,15 +49,15 @@ const Row = styled.div`
 const CheckedBox = styled.div`
   display: flex;
   align-items: center;
-  margin: 0 7px;
+  margin-right: auto;
   color: green;
   cursor: pointer;
 `
 
 const UncheckedBox = styled.div`
   display: flex;
+  margin-right: auto;
   align-items: center;
-  margin: 0 7px;
   cursor: pointer;
 `
 
@@ -65,6 +65,13 @@ const EditButton = styled.span`
   display: flex;
   align-items: center;
   margin: 0 7px;
+`
+
+const TodoCategory = styled.span`
+  display: flex;
+  margin-left: auto;
+  font-size: 14px;
+  opacity: 0.4;
 `
 
 function TodoList() {
@@ -76,7 +83,6 @@ function TodoList() {
   useEffect(() => {
     axios.get('/api/v1/todos.json')
     .then(resp => {
-      console.log(resp.data)
       setTodos(resp.data);
     })
     .catch(e => {
@@ -156,6 +162,9 @@ function TodoList() {
               <TodoName is_completed={val.is_completed}>
                 {val.name}
               </TodoName>
+              <TodoCategory>
+                {val.category}
+              </TodoCategory>
               <Link to={"/todos/" + val.id + "/edit"}>
                 <EditButton>
                   <AiOutlineEdit />
