@@ -19,4 +19,4 @@ A(ainme)・C(comic)・G(game)
 - Visual Studio Code 
 
 ## 使い方
-![Todoの一覧はページ下部のタブでカテゴリー別に切り替えが可能です](https://user-images.githubusercontent.com/81018523/118083719-58ec2900-b3fa-11eb-99cd-71d5c1baac19.mp4)
+
