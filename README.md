@@ -1,8 +1,8 @@
 # ACG-manager
-<img src="" width="500">
 
-A(ainme)・C(comic)・G(game)  
 見たいアニメ・読みたいマンガ・したいゲームを管理するTodoアプリです
+
+![](https://github.com/yuus0524/ACG-manager/blob/master/ACG-manager_logo.png)
 
 ## 機能一覧
 - Todoの一覧機能
