@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles(() => ({
   removeAllBt: {
     marginLeft: 10,
-    minWidth: 170,
+    minWidth: 230,
     height: 40,
   }
 }));
@@ -91,7 +91,7 @@ function TodoListGame() {
   }, [])
 
   const removeTodosGame = () => {
-    const sure = window.confirm('本当に全て削除していいですか？');
+    const sure = window.confirm('本当にゲームのTodoを全て削除していいですか？');
     if (sure) {
       axios.delete('/api/v1/todos/destroy_game')
       .then(response => {
@@ -136,7 +136,7 @@ function TodoListGame() {
           endIcon={<DeleteIcon />}
           onClick={removeTodosGame}
         >
-           Todoを全て削除
+           ゲームのTodoを全て削除
         </Button>
       </SearchAndButtton>
 
