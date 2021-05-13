@@ -11,7 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles(() => ({
   removeAllBt: {
     marginLeft: 10,
-    minWidth: 170,
+    minWidth: 230,
     height: 40,
   }
 }));
@@ -39,7 +39,7 @@ const TodoName = styled.span`
 
 const Row = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   margin: 7px auto;
   padding: 10px;
@@ -49,15 +49,15 @@ const Row = styled.div`
 const CheckedBox = styled.div`
   display: flex;
   align-items: center;
-  margin-right: auto;
+  margin: 0 7px;
   color: green;
   cursor: pointer;
 `
 
 const UncheckedBox = styled.div`
   display: flex;
-  margin-right: auto;
   align-items: center;
+  margin: 0 7px;
   cursor: pointer;
 `
 
@@ -67,34 +67,34 @@ const EditButton = styled.span`
   margin: 0 7px;
 `
 
-const TodoCategory = styled.span`
-  display: flex;
-  margin-left: auto;
-  font-size: 14px;
-  opacity: 0.4;
-`
-
-function TodoList() {
+function TodoListGame() {
   const classes = useStyles();
 
   const [todos, setTodos] = useState([])
   const [searchName, setSearchName] = useState('')
 
+  const filterByCategory = item => {
+    if (item.category === "ゲーム") {
+      return true;
+    }
+    return false;
+  };
+
   useEffect(() => {
     axios.get('/api/v1/todos.json')
-    .then(resp => {
-      setTodos(resp.data);
+    .then(response => {
+      setTodos(response.data.filter(filterByCategory));
     })
     .catch(e => {
       console.log(e);
     })
   }, [])
 
-  const removeAllTodos = () => {
-    const sure = window.confirm('本当に全て削除していいですか？');
+  const removeTodosGame = () => {
+    const sure = window.confirm('本当にゲームのTodoを全て削除していいですか？');
     if (sure) {
-      axios.delete('/api/v1/todos/destroy_all')
-      .then(resp => {
+      axios.delete('/api/v1/todos/destroy_game')
+      .then(response => {
         setTodos([])
       })
       .catch(e => {
@@ -120,7 +120,7 @@ function TodoList() {
 
   return (
     <>
-      <h1>Todo List</h1>
+      <h1>Todo Game</h1>
       <SearchAndButtton>
         <SearchForm
           type="text"
@@ -134,14 +134,15 @@ function TodoList() {
           variant="contained"
           color="secondary"
           endIcon={<DeleteIcon />}
-          onClick={removeAllTodos}
+          onClick={removeTodosGame}
         >
-           Todoを全て削除
+           ゲームのTodoを全て削除
         </Button>
       </SearchAndButtton>
 
       <div>
         {todos.filter((val) => {
+          
           if(searchName === "") {
             return val
           } else if (val.name.toLowerCase().includes(searchName.toLowerCase())) {
@@ -162,9 +163,6 @@ function TodoList() {
               <TodoName is_completed={val.is_completed}>
                 {val.name}
               </TodoName>
-              <TodoCategory>
-                {val.category}
-              </TodoCategory>
               <Link to={"/todos/" + val.id + "/edit"}>
                 <EditButton>
                   <AiOutlineEdit />
@@ -178,4 +176,4 @@ function TodoList() {
   )
 }
 
-export default TodoList
+export default TodoListGame

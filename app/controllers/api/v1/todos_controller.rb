@@ -35,6 +35,33 @@ class Api::V1::TodosController < ApplicationController
     end
   end
 
+  def destroy_anime
+    todo = Todo.where(category: "アニメ")
+    if todo.destroy_all
+      head :no_content
+    else
+      render json: { error: "削除が失敗しました" }, status: 422
+    end
+  end
+
+  def destroy_comic
+    todo = Todo.where(category: "マンガ")
+    if todo.destroy_all
+      head :no_content
+    else
+      render json: { error: "削除が失敗しました" }, status: 422
+    end
+  end
+
+  def destroy_game
+    todo = Todo.where(category: "ゲーム")
+    if todo.destroy_all
+      head :no_content
+    else
+      render json: { error: "削除が失敗しました" }, status: 422
+    end
+  end
+
   def destroy_all
     if Todo.destroy_all
       head :no_content
