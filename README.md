@@ -19,3 +19,4 @@ A(ainme)・C(comic)・G(game)
 - Visual Studio Code 
 
 ## 使い方
+![Todoの一覧表示はページ下部のタブでカテゴリー別に切り替えが可能です](https://github.com/yuus0524/ACG-manager/blob/master/index.mp4)
