@@ -1,24 +1,10 @@
-# README
+# ACG-manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A(ainme)・C(comic)・G(game)  
+見たいアニメ・読みたいマンガ・したいゲームを管理するTodoアプリです
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 機能一覧
+- Todoの一覧機能
+- Todoの新規投稿機能
+- Todoの編集機能
+- Todoの削除機能
